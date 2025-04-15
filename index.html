@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Booking...</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 text-gray-800 min-h-screen">
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-700">_EventAura(❤️)_</h1>
+    <ul class="flex gap-4 text-gray-700 font-medium">
+      <li><a href="#calendar" class="hover:text-blue-500">Calendar</a></li>
+      <li><a href="#form" class="hover:text-blue-500">Book Event</a></li>
+      <li><a href="#gallery" class="hover:text-blue-500">Gallery</a></li>
+      <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="text-center p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-3xl font-semibold">
+    "My Event, My Vibe"
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <!-- Calendar Section -->
+    <section id="calendar-section">
+      <h2 class="text-xl font-bold mb-4">Select Event Date</h2>
+      <div id="calendar" class="shadow rounded-md overflow-hidden"></div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section>
+      <h2 class="text-xl font-bold mb-4" id="form">Book Your Event</h2>
+      <form id="bookingForm" class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+          <label class="block text-gray-700">Name</label>
+          <input type="text" name="name" class="shadow border rounded w-full py-2 px-3" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Email</label>
+          <input type="email" name="email" class="shadow border rounded w-full py-2 px-3" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Contact Number</label>
+          <input type="text" name="contact" class="shadow border rounded w-full py-2 px-3" required>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Event Type</label>
+          <select name="eventType" id="eventType" class="shadow border rounded w-full py-2 px-3" required>
+            <option value="" disabled selected>Select an event</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Conference">Conference</option>
+            <option value="Concert">Concert</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="mb-4 hidden" id="otherEventDiv">
+          <label class="block text-gray-700">Please specify your event</label>
+          <input type="text" name="otherEvent" id="otherEvent" class="shadow border rounded w-full py-2 px-3">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700">Number of Attendees</label>
+          <input type="number" name="attendees" class="shadow border rounded w-full py-2 px-3" required>
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Submit Booking
+        </button>
+      </form>
+      <p id="confirmationMessage" style="color: green;"><b>Your event has been booked successfully!!!</b></p>
+
+      <p id="confirmationMessage" class="text-green-600 font-medium hidden"></p>
+    </section>
+  </main>
+
+  <!-- Event Gallery -->
+<section id="gallery" class="max-w-6xl mx-auto p-6">
+  <h2 class="text-2xl font-bold mb-4">Previous Event Highlights</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-center">
+    <div>
+      <img src="images/wedding.jpg" class="rounded-lg shadow-md" alt="Event 1">
+      <p class="mt-2 font-semibold">Wedding</p>
+    </div>
+    <div>
+      <img src="images/bday.jpg" class="rounded-lg shadow-md" alt="Event 2">
+      <p class="mt-2 font-semibold">Birthday</p>
+    </div>
+    <div>
+      <img src="images/celebration.jpg" class="rounded-lg shadow-md" alt="Event 3">
+      <p class="mt-2 font-semibold">Celebration</p>
+    </div>
+    <div>
+      <img src="images/concert.jpg" class="rounded-lg shadow-md" alt="Event 4">
+      <p class="mt-2 font-semibold">Concert</p>
+    </div>
+    <div>
+      <img src="images/conference.jpg" class="rounded-lg shadow-md" alt="Event 5">
+      <p class="mt-2 font-semibold">Conference</p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-gray-900 text-white text-center p-6 mt-12">
+    <p class="text-sm">&copy; 2025 EventAura.</p>
+    <p class="text-xs mt-1">Contact: myevent@example.com | +91-7887931406</p>
+  </footer>
+
+  <script>
+    document.getElementById('eventType').addEventListener('change', function () {
+      const otherDiv = document.getElementById('otherEventDiv');
+      if (this.value === 'Other') {
+        otherDiv.classList.remove('hidden');
+      } else {
+        otherDiv.classList.add('hidden');
+      }
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
